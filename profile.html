@@ -1,0 +1,49 @@
+<form name="selbox">
+<p>業界</p>
+<select name="league" onchange="teamSet()">
+<option value="">選択してください</option>
+<option value="">営業</option>
+<option value="">IT</option>
+</select>
+
+<p>職種</p>
+<select name="team">
+<option value="">選択してください</option>
+<option value=""></option>
+<option value=""></option>
+<option value=""></option>
+</select>
+</form>
+
+
+<script>
+
+//セ・リーグのチームの配列
+var s_league=new Array(
+"","アカウント","販促","マーケティング"
+);
+
+//パ・リーグのチームの配列
+var p_league=new Array(
+"","PM","SE","プログラマー"
+);
+
+
+function teamSet(){
+
+  //オプションタグを連続して書き換える
+  for ( i=1; i<7; i++ ){
+
+    //選択したリーグによって分岐
+    switch (document.selbox.league.selectedIndex){
+      case 0: document.selbox.team.options[i].text="";break;
+      case 1: document.selbox.team.options[i].text=s_league[i];break;
+      case 2: document.selbox.team.options[i].text=p_league[i];break;
+    }
+  }
+
+  //チーム名のセレクトボックスの選択番号を０にする
+  document.selbox.team.selectedIndex=0;
+}
+
+</script>
